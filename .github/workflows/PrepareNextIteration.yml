@@ -18,6 +18,8 @@ jobs:
         
       - name: Update Version Number
         run: |
+          git config --global user.email "tomasz.tylenda@sonarsource.com"
+          git config --global user.name "Tomasz Tylenda"
           git checkout -b bump-iteration
           mvn versions:set -DgenerateBackupPoms=false -DnewVersion=1.1-SNAPSHOT
           git commit -m 'Prepare next development iteration' -a
