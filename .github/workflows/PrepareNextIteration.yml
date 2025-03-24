@@ -1,0 +1,19 @@
+name: Prepare Next Development Iteration
+
+on:
+  workflow_dispatch:
+    inputs:
+      nextVersion:
+        description: version number or the next iteration
+        required: true
+
+jobs:
+  Next-Iteration-Job:
+    name: Next Iteration Job
+    runs-on: ubuntu-latest
+    steps:
+      - echo "Creating PR"
+      - git checkout -b bump-iteration
+      - mvn versions:set -DgenerateBackupPoms=false -DnewVersion=1.1-SNAPSHOT
+      - 
+      - echo "Done"
