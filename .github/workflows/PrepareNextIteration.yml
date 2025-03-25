@@ -20,10 +20,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git config --global user.email "tomasz.tylenda@sonarsource.com"
-          git config --global user.name "Tomasz Tylenda"
-          git checkout -b bump-iteration
+          git config user.email "tomasz.tylenda@sonarsource.com"
+          git config user.name "Tomasz Tylenda"
+          git checkout -b gh-action/next-iteration
           mvn versions:set -DgenerateBackupPoms=false -DnewVersion="${{ inputs.nextVersion }}"
           git commit -m 'Prepare next development iteration' -a
-          git push --set-upstream origin bump-iteration
+          git push --set-upstream origin gh-action/next-iteration
           gh pr create -B main --title 'Prepare next development iteration' --body ''
