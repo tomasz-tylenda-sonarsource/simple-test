@@ -23,7 +23,7 @@ jobs:
           git config --global user.email "tomasz.tylenda@sonarsource.com"
           git config --global user.name "Tomasz Tylenda"
           git checkout -b bump-iteration
-          mvn versions:set -DgenerateBackupPoms=false -DnewVersion="${{ inputs.version }}"
+          mvn versions:set -DgenerateBackupPoms=false -DnewVersion="${{ inputs.nextVersion }}"
           git commit -m 'Prepare next development iteration' -a
           git push --set-upstream origin bump-iteration
           gh pr create -B main --title 'Prepare next development iteration' --body ''
