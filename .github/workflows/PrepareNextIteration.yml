@@ -20,6 +20,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run number: ${{ github.run_number }}"
+          echo "Run attempt: ${{ github.run_attempt }}"
+          exit 0
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git checkout -b gh-action/next-iteration
